@@ -33,7 +33,7 @@ from firebase_admin import auth
 from st_pages import Page, show_pages, hide_pages
 from firebase_admin import firestore
 from PIL import Image
-from utils import get_user_data, get_user_collection, display_record, eval_password
+from utils import get_user_data, get_user_collection, display_record, eval_password2
 
 TITLE: Final = "REFLEXIVE.AI"
 VERSION = "0.0.1"
@@ -183,7 +183,7 @@ def register_user_form(preauthorized: Union[str, Sequence[str], None]) -> None:
     except EmailNotValidError as e:
         return error(e)
 
-    password_eval, password_criterias = eval_password(password)
+    password_eval, password_criterias = eval_password2(password)
     if not password_eval:
         return st.warning(
             f"Password is too weak: {password_criterias} ", icon="⚠️"

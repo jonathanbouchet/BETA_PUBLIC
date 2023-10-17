@@ -405,3 +405,30 @@ def eval_password(password: str):
         return True, ""
 
 
+def eval_password2(password: str):
+    """
+    evaluate password according its policy
+    :param password:
+    :return:
+    """
+    policy = PasswordPolicy.from_names(length=12, uppercase=2, numbers=2, special=2, nonletters=2)
+    eval_psw = policy.test(password)
+    eval_str = ','.join([str(ele) for ele in eval_psw])
+    res = ""
+    if 'Length' in eval_str:
+        res += "Length not satisfied, "
+    if 'Uppercase' in eval_str:
+        res += "Uppercase not satisfied, "
+    if 'Numbers' in eval_str:
+        res += "Numbers not satisfied, "
+    if 'Special' in eval_str:
+        res += "Special not satisfied, "
+    if 'Special' in eval_str:
+        res += "Non Letters not satisfied, "
+
+    if len(eval_psw) > 0:
+        return False, res
+    else:
+        return True, ""
+
+
