@@ -70,7 +70,8 @@ def simple_chat():
                    "pydantic_life_insurance_model": st.session_state.pydantic_life_insurance_model.dict(),
                    "created_at": datetime.now()}
             # print(f"writing to database:{obj}")
-            doc_ref = db.collection(u'users_app').document()  # create a new document.ID
+            collection_name = st.secrets["firestore_collection"]
+            doc_ref = db.collection(f"{collection_name}").document()  # create a new document.ID
             doc_ref.set(obj)  # add obj to collection
             db.close()
 
