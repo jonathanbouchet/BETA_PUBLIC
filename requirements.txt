@@ -60,6 +60,7 @@ oauth2client==3.0.0
 openai==0.27.8
 packaging==23.1
 pandas==2.0.3
+password-strength==0.0.3.post2
 Pillow==9.5.0
 proto-plus==1.22.3
 protobuf==4.24.0
